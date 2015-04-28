@@ -69,4 +69,374 @@
         android:textSize="10sp"
         tools:ignore="SmallSp" />
 
+    <ImageView
+        android:id="@+id/goldsquare"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="272dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:contentDescription="@string/resign"
+        android:gravity="top"
+        android:src="@drawable/goldsquare" />
+
+    <Button
+        android:id="@+id/br"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/brook"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/bknight"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="86dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/bbishop"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bq"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="161dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/bqueen"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bk"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="123dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/bking"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bb2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="198dp"
+        android:layout_marginStart="198dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/bbishop"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bn2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="235dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/bknight"
+        android:text="" />
+
+    <Button
+        android:id="@+id/br2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="273dp"
+        android:layout_marginStart="273dp"
+        android:layout_marginTop="67dp"
+        android:background="@drawable/brook"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp3"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="85dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp4"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="123dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="160dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp6"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="198dp"
+        android:layout_marginStart="198dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp7"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="234dp"
+        android:layout_marginStart="234dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bp8"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="271dp"
+        android:layout_marginStart="271dp"
+        android:layout_marginTop="101dp"
+        android:background="@drawable/bpawn"
+        android:text="" />
+
+    <!-- Red -->
+
+    <Button
+        android:id="@+id/rb1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="87dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rbishop"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rb2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="197dp"
+        android:layout_marginStart="197dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rbishop"
+        android:text="" />
+
+    <!-- Red -->
+
+    <Button
+        android:id="@+id/rr1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rrook"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rr2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="271dp"
+        android:layout_marginStart="271dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rrook"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rn1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rknight"
+        android:gravity="top"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rn2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="235dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rknight"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rk"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="124dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rking"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rq"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="161dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rqueen"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp3"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="86dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp4"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="123dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="160dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp6"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="198dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp7"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="235dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:text="" />
+
+    <Button
+        android:id="@+id/rp8"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="272dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="279dp"
+        android:background="@drawable/rpawn"
+        android:gravity="bottom"
+        android:text="" />
+
 </RelativeLayout>

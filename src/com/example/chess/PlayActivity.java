@@ -2,13 +2,6 @@ package com.example.chess;
 
 import java.util.ArrayList;
 
-import chessPieces.Bishop;
-import chessPieces.King;
-import chessPieces.Knight;
-import chessPieces.Pawn;
-import chessPieces.Pieces;
-import chessPieces.Queen;
-import chessPieces.Rook;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +10,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import chessPieces.Bishop;
+import chessPieces.King;
+import chessPieces.Knight;
+import chessPieces.Pawn;
+import chessPieces.Pieces;
+import chessPieces.Queen;
+import chessPieces.Rook;
 
 //Activity for when chess is being played. 
 public class PlayActivity extends Activity {
@@ -34,40 +34,71 @@ public class PlayActivity extends Activity {
 	static Pieces lastMove = null;
 	static char isInCheck;
 
-	//Chess piece buttons
-	private Button bB1;
-	private Button bB2;
-	private Button bN1;
-	private Button bN2;
-	private Button bQ;
-	private Button bK;
-	private Button bR1;
-	private Button bR2;
-	private Button bp1;
-	private Button bp2;
-	private Button bp3;
-	private Button bp4;
-	private Button bp5;
-	private Button bp6;
-	private Button bp7;
-	private Button bp8;
-	
-	private Button rB1;
-	private Button rB2;
-	private Button rK;
-	private Button rQ;
-	private Button rN1;
-	private Button rN2;
-	private Button rR1;
-	private Button rR2;
-	private Button rp1;
-	private Button rp2;
-	private Button rp3;
-	private Button rp4;
-	private Button rp5;
-	private Button rp6;
-	private Button rp7;
-	private Button rp8;
+	//Chess board buttons
+	private Button b00;
+	private Button b01;
+	private Button b02;
+	private Button b03;
+	private Button b04;
+	private Button b05;
+	private Button b07;
+	private Button b10;
+	private Button b11;
+	private Button b12;
+	private Button b13;
+	private Button b14;
+	private Button b15;
+	private Button b16;
+	private Button b17;
+	private Button b20;
+	private Button b21;
+	private Button b22;
+	private Button b23;
+	private Button b24;
+	private Button b25;
+	private Button b26;
+	private Button b27;
+	private Button b30;
+	private Button b31;
+	private Button b32;
+	private Button b33;
+	private Button b34;
+	private Button b35;
+	private Button b36;
+	private Button b37;
+	private Button b40;
+	private Button b41;
+	private Button b42;
+	private Button b43;
+	private Button b44;
+	private Button b45;
+	private Button b46;
+	private Button b47;
+	private Button b50;
+	private Button b51;
+	private Button b52;
+	private Button b53;
+	private Button b54;
+	private Button b55;
+	private Button b56;
+	private Button b57;
+	private Button b60;
+	private Button b61;
+	private Button b62;
+	private Button b63;
+	private Button b64;
+	private Button b65;
+	private Button b66;
+	private Button b67;
+	private Button b70;
+	private Button b71;
+	private Button b72;
+	private Button b73;
+	private Button b74;
+	private Button b75;
+	private Button b76;
+	private Button b77;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +140,7 @@ public class PlayActivity extends Activity {
 		});
 
 		createChessBoard();
-		placePieces();
+		updateBoard();
 		printBoard();
 
 	}
@@ -164,354 +195,24 @@ public class PlayActivity extends Activity {
 
 	}
 	
-	public void placePieces(){
+	public void updateBoard(){
+
 		
-		goldSquare = (ImageView) this.findViewById(R.id.goldsquare);
+		/* goldSquare = (ImageView) this.findViewById(R.id.goldsquare);
 		goldSquare.setVisibility(4);
-		goldSquare.bringToFront();
+		goldSquare.bringToFront(); */
 		
-		bR1= (Button) this.findViewById(R.id.br);
-		this.bR1.setOnClickListener(new OnClickListener() {
+		 b00= (Button) this.findViewById(R.id.b00); 
+		this.b00.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				goldSquare.setLeft(bR1.getLeft());
-				goldSquare.setTop(bR1.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bN1= (Button) this.findViewById(R.id.bn);
-		this.bN1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bN1.getLeft());
-				goldSquare.setTop(bN1.getTop());
-				goldSquare.setVisibility(0);
+				b00.setBackgroundResource(R.drawable.bbishop);
+				
 			}
 		});
 		
-		bB1= (Button) this.findViewById(R.id.bb);
-		this.bB1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bB1.getLeft());
-				goldSquare.setTop(bB1.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bQ= (Button) this.findViewById(R.id.bq);
-		this.bQ.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bQ.getLeft());
-				goldSquare.setTop(bQ.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bK= (Button) this.findViewById(R.id.bk);
-		this.bK.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bK.getLeft());
-				goldSquare.setTop(bK.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bB2= (Button) this.findViewById(R.id.bb2);
-		this.bB2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bB2.getLeft());
-				goldSquare.setTop(bB2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bN2= (Button) this.findViewById(R.id.bn2);
-		this.bN2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bN2.getLeft());
-				goldSquare.setTop(bN2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bR2= (Button) this.findViewById(R.id.br2);
-		this.bR2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bR2.getLeft());
-				goldSquare.setTop(bR2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp1= (Button) this.findViewById(R.id.bp1);
-		this.bp1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp1.getLeft());
-				goldSquare.setTop(bp1.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp2= (Button) this.findViewById(R.id.bp2);
-		this.bp2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp2.getLeft());
-				goldSquare.setTop(bp2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp3= (Button) this.findViewById(R.id.bp3);
-		this.bp3.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp3.getLeft());
-				goldSquare.setTop(bp3.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp4= (Button) this.findViewById(R.id.bp4);
-		this.bp4.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp4.getLeft());
-				goldSquare.setTop(bp4.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp5= (Button) this.findViewById(R.id.bp5);
-		this.bp5.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp5.getLeft());
-				goldSquare.setTop(bp5.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp6= (Button) this.findViewById(R.id.bp6);
-		this.bp6.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp6.getLeft());
-				goldSquare.setTop(bp6.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp7= (Button) this.findViewById(R.id.bp7);
-		this.bp7.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp7.getLeft());
-				goldSquare.setTop(bp7.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		bp8= (Button) this.findViewById(R.id.bp8);
-		this.bp8.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(bp8.getLeft());
-				goldSquare.setTop(bp8.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-		
-		//Red pieces
-		
-		rB1= (Button) this.findViewById(R.id.rb1);
-		this.rB1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rB1.getLeft());
-				goldSquare.setTop(rB1.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		//Red pieces
-		rB2= (Button) this.findViewById(R.id.rb2);
-		this.rB2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rB2.getLeft());
-				goldSquare.setTop(rB2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rN1= (Button) this.findViewById(R.id.rn1);
-		this.rN1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rN1.getLeft());
-				goldSquare.setTop(rN1.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rN2= (Button) this.findViewById(R.id.rn2);
-		this.rN2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rN2.getLeft());
-				goldSquare.setTop(rN2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rR1= (Button) this.findViewById(R.id.rr1);
-		this.rR1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rR1.getLeft());
-				goldSquare.setTop(rR1.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rR2= (Button) this.findViewById(R.id.rr2);
-		this.rR2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rR2.getLeft());
-				goldSquare.setTop(rR2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rQ= (Button) this.findViewById(R.id.rq);
-		this.rQ.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rQ.getLeft());
-				goldSquare.setTop(rQ.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rK= (Button) this.findViewById(R.id.rk);
-		this.rK.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rK.getLeft());
-				goldSquare.setTop(rK.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp1= (Button) this.findViewById(R.id.rp1);
-		this.rp1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp1.getLeft());
-				goldSquare.setTop(rp1.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp2= (Button) this.findViewById(R.id.rp2);
-		this.rp2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp2.getLeft());
-				goldSquare.setTop(rp2.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp3= (Button) this.findViewById(R.id.rp3);
-		this.rp3.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp3.getLeft());
-				goldSquare.setTop(rp3.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp4= (Button) this.findViewById(R.id.rp4);
-		this.rp4.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp4.getLeft());
-				goldSquare.setTop(rp4.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp5= (Button) this.findViewById(R.id.rp5);
-		this.rp5.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp5.getLeft());
-				goldSquare.setTop(rp5.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp6= (Button) this.findViewById(R.id.rp6);
-		this.rp6.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp6.getLeft());
-				goldSquare.setTop(rp6.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp7= (Button) this.findViewById(R.id.rp7);
-		this.rp7.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp7.getLeft());
-				goldSquare.setTop(rp7.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		rp8= (Button) this.findViewById(R.id.rp8);
-		this.rp8.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				goldSquare.setLeft(rp8.getLeft());
-				goldSquare.setTop(rp8.getTop());
-				goldSquare.setVisibility(0);
-			}
-		});
-		
-	
+
 		
 		
 	}

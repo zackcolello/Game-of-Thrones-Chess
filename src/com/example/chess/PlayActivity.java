@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import chessPieces.Bishop;
 import chessPieces.King;
 import chessPieces.Knight;
@@ -101,8 +100,6 @@ public class PlayActivity extends Activity {
 	private static Button b75;
 	private static Button b76;
 	private static Button b77;
-	private static ArrayList<Button> buttons = new ArrayList<Button>();
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +140,6 @@ public class PlayActivity extends Activity {
 			}
 		});
 
-		addButtons();
 		createChessBoard();
 		updateBoard();
 		printBoard();
@@ -204,7 +200,7 @@ public class PlayActivity extends Activity {
 
 		b00 = (Button) this.findViewById(R.id.b00);
 		assignPiece(b00, 0, 0);
-		this.b00.setOnClickListener(new OnClickListener() {
+		PlayActivity.b00.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -217,7 +213,7 @@ public class PlayActivity extends Activity {
 		});
 		b01 = (Button) this.findViewById(R.id.b01);
 		assignPiece(b01, 0, 1);
-		this.b01.setOnClickListener(new OnClickListener() {
+		PlayActivity.b01.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -230,7 +226,7 @@ public class PlayActivity extends Activity {
 		});
 		b02 = (Button) this.findViewById(R.id.b02);
 		assignPiece(b02, 0, 2);
-		this.b02.setOnClickListener(new OnClickListener() {
+		PlayActivity.b02.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -243,7 +239,7 @@ public class PlayActivity extends Activity {
 		});
 		b03 = (Button) this.findViewById(R.id.b03);
 		assignPiece(b03, 0, 3);
-		this.b03.setOnClickListener(new OnClickListener() {
+		PlayActivity.b03.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -256,7 +252,7 @@ public class PlayActivity extends Activity {
 		});
 		b04 = (Button) this.findViewById(R.id.b04);
 		assignPiece(b04, 0, 4);
-		this.b04.setOnClickListener(new OnClickListener() {
+		PlayActivity.b04.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -269,7 +265,7 @@ public class PlayActivity extends Activity {
 		});
 		b05 = (Button) this.findViewById(R.id.b05);
 		assignPiece(b05, 0, 5);
-		this.b05.setOnClickListener(new OnClickListener() {
+		PlayActivity.b05.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -282,7 +278,7 @@ public class PlayActivity extends Activity {
 		});
 		b06 = (Button) this.findViewById(R.id.b06);
 		assignPiece(b06, 0, 6);
-		this.b06.setOnClickListener(new OnClickListener() {
+		PlayActivity.b06.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -295,7 +291,7 @@ public class PlayActivity extends Activity {
 		});
 		b07 = (Button) this.findViewById(R.id.b07);
 		assignPiece(b07, 0, 7);
-		this.b07.setOnClickListener(new OnClickListener() {
+		PlayActivity.b07.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -308,7 +304,7 @@ public class PlayActivity extends Activity {
 		});
 		b10 = (Button) this.findViewById(R.id.b10);
 		assignPiece(b10, 1, 0);
-		this.b10.setOnClickListener(new OnClickListener() {
+		PlayActivity.b10.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -321,7 +317,7 @@ public class PlayActivity extends Activity {
 		});
 		b11 = (Button) this.findViewById(R.id.b11);
 		assignPiece(b11, 1, 1);
-		this.b11.setOnClickListener(new OnClickListener() {
+		PlayActivity.b11.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -334,7 +330,7 @@ public class PlayActivity extends Activity {
 		});
 		b12 = (Button) this.findViewById(R.id.b12);
 		assignPiece(b12, 1, 2);
-		this.b12.setOnClickListener(new OnClickListener() {
+		PlayActivity.b12.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -347,7 +343,7 @@ public class PlayActivity extends Activity {
 		});
 		b13 = (Button) this.findViewById(R.id.b13);
 		assignPiece(b13, 1, 3);
-		this.b13.setOnClickListener(new OnClickListener() {
+		PlayActivity.b13.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -360,7 +356,7 @@ public class PlayActivity extends Activity {
 		});
 		b14 = (Button) this.findViewById(R.id.b14);
 		assignPiece(b14, 1, 4);
-		this.b14.setOnClickListener(new OnClickListener() {
+		PlayActivity.b14.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -373,7 +369,7 @@ public class PlayActivity extends Activity {
 		});
 		b15 = (Button) this.findViewById(R.id.b15);
 		assignPiece(b15, 1, 5);
-		this.b15.setOnClickListener(new OnClickListener() {
+		PlayActivity.b15.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -386,7 +382,7 @@ public class PlayActivity extends Activity {
 		});
 		b16 = (Button) this.findViewById(R.id.b16);
 		assignPiece(b16, 1, 6);
-		this.b16.setOnClickListener(new OnClickListener() {
+		PlayActivity.b16.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -399,7 +395,7 @@ public class PlayActivity extends Activity {
 		});
 		b17 = (Button) this.findViewById(R.id.b17);
 		assignPiece(b17, 1, 7);
-		this.b17.setOnClickListener(new OnClickListener() {
+		PlayActivity.b17.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -412,7 +408,7 @@ public class PlayActivity extends Activity {
 		});
 		b20 = (Button) this.findViewById(R.id.b20);
 		assignPiece(b20, 2, 0);
-		this.b20.setOnClickListener(new OnClickListener() {
+		PlayActivity.b20.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -425,7 +421,7 @@ public class PlayActivity extends Activity {
 		});
 		b21 = (Button) this.findViewById(R.id.b21);
 		assignPiece(b21, 2, 1);
-		this.b21.setOnClickListener(new OnClickListener() {
+		PlayActivity.b21.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -438,7 +434,7 @@ public class PlayActivity extends Activity {
 		});
 		b22 = (Button) this.findViewById(R.id.b22);
 		assignPiece(b22, 2, 2);
-		this.b22.setOnClickListener(new OnClickListener() {
+		PlayActivity.b22.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -451,7 +447,7 @@ public class PlayActivity extends Activity {
 		});
 		b23 = (Button) this.findViewById(R.id.b23);
 		assignPiece(b23, 2, 3);
-		this.b23.setOnClickListener(new OnClickListener() {
+		PlayActivity.b23.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -464,7 +460,7 @@ public class PlayActivity extends Activity {
 		});
 		b24 = (Button) this.findViewById(R.id.b24);
 		assignPiece(b24, 2, 4);
-		this.b24.setOnClickListener(new OnClickListener() {
+		PlayActivity.b24.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -477,7 +473,7 @@ public class PlayActivity extends Activity {
 		});
 		b25 = (Button) this.findViewById(R.id.b25);
 		assignPiece(b25, 2, 5);
-		this.b25.setOnClickListener(new OnClickListener() {
+		PlayActivity.b25.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -490,7 +486,7 @@ public class PlayActivity extends Activity {
 		});
 		b26 = (Button) this.findViewById(R.id.b26);
 		assignPiece(b26, 2, 6);
-		this.b26.setOnClickListener(new OnClickListener() {
+		PlayActivity.b26.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -503,7 +499,7 @@ public class PlayActivity extends Activity {
 		});
 		b27 = (Button) this.findViewById(R.id.b27);
 		assignPiece(b27, 2, 7);
-		this.b27.setOnClickListener(new OnClickListener() {
+		PlayActivity.b27.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -516,7 +512,7 @@ public class PlayActivity extends Activity {
 		});
 		b30 = (Button) this.findViewById(R.id.b30);
 		assignPiece(b30, 3, 0);
-		this.b30.setOnClickListener(new OnClickListener() {
+		PlayActivity.b30.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -529,7 +525,7 @@ public class PlayActivity extends Activity {
 		});
 		b31 = (Button) this.findViewById(R.id.b31);
 		assignPiece(b31, 3, 1);
-		this.b31.setOnClickListener(new OnClickListener() {
+		PlayActivity.b31.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -542,7 +538,7 @@ public class PlayActivity extends Activity {
 		});
 		b32 = (Button) this.findViewById(R.id.b32);
 		assignPiece(b32, 3, 2);
-		this.b32.setOnClickListener(new OnClickListener() {
+		PlayActivity.b32.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -555,7 +551,7 @@ public class PlayActivity extends Activity {
 		});
 		b33 = (Button) this.findViewById(R.id.b33);
 		assignPiece(b33, 3, 3);
-		this.b33.setOnClickListener(new OnClickListener() {
+		PlayActivity.b33.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -568,7 +564,7 @@ public class PlayActivity extends Activity {
 		});
 		b34 = (Button) this.findViewById(R.id.b34);
 		assignPiece(b34, 3, 4);
-		this.b34.setOnClickListener(new OnClickListener() {
+		PlayActivity.b34.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -581,7 +577,7 @@ public class PlayActivity extends Activity {
 		});
 		b35 = (Button) this.findViewById(R.id.b35);
 		assignPiece(b35, 3, 5);
-		this.b35.setOnClickListener(new OnClickListener() {
+		PlayActivity.b35.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -594,7 +590,7 @@ public class PlayActivity extends Activity {
 		});
 		b36 = (Button) this.findViewById(R.id.b36);
 		assignPiece(b36, 3, 6);
-		this.b36.setOnClickListener(new OnClickListener() {
+		PlayActivity.b36.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -607,7 +603,7 @@ public class PlayActivity extends Activity {
 		});
 		b37 = (Button) this.findViewById(R.id.b37);
 		assignPiece(b37, 3, 7);
-		this.b37.setOnClickListener(new OnClickListener() {
+		PlayActivity.b37.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -620,7 +616,7 @@ public class PlayActivity extends Activity {
 		});
 		b40 = (Button) this.findViewById(R.id.b40);
 		assignPiece(b40, 4, 0);
-		this.b40.setOnClickListener(new OnClickListener() {
+		PlayActivity.b40.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -633,7 +629,7 @@ public class PlayActivity extends Activity {
 		});
 		b41 = (Button) this.findViewById(R.id.b41);
 		assignPiece(b41, 4, 1);
-		this.b41.setOnClickListener(new OnClickListener() {
+		PlayActivity.b41.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -646,7 +642,7 @@ public class PlayActivity extends Activity {
 		});
 		b42 = (Button) this.findViewById(R.id.b42);
 		assignPiece(b42, 4, 2);
-		this.b42.setOnClickListener(new OnClickListener() {
+		PlayActivity.b42.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -659,7 +655,7 @@ public class PlayActivity extends Activity {
 		});
 		b43 = (Button) this.findViewById(R.id.b43);
 		assignPiece(b43, 4, 3);
-		this.b43.setOnClickListener(new OnClickListener() {
+		PlayActivity.b43.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -672,7 +668,7 @@ public class PlayActivity extends Activity {
 		});
 		b44 = (Button) this.findViewById(R.id.b44);
 		assignPiece(b44, 4, 4);
-		this.b44.setOnClickListener(new OnClickListener() {
+		PlayActivity.b44.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -685,7 +681,7 @@ public class PlayActivity extends Activity {
 		});
 		b45 = (Button) this.findViewById(R.id.b45);
 		assignPiece(b45, 4, 5);
-		this.b45.setOnClickListener(new OnClickListener() {
+		PlayActivity.b45.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -698,7 +694,7 @@ public class PlayActivity extends Activity {
 		});
 		b46 = (Button) this.findViewById(R.id.b46);
 		assignPiece(b46, 4, 6);
-		this.b46.setOnClickListener(new OnClickListener() {
+		PlayActivity.b46.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -711,7 +707,7 @@ public class PlayActivity extends Activity {
 		});
 		b47 = (Button) this.findViewById(R.id.b47);
 		assignPiece(b47, 4, 7);
-		this.b47.setOnClickListener(new OnClickListener() {
+		PlayActivity.b47.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -724,7 +720,7 @@ public class PlayActivity extends Activity {
 		});
 		b50 = (Button) this.findViewById(R.id.b50);
 		assignPiece(b50, 5, 0);
-		this.b50.setOnClickListener(new OnClickListener() {
+		PlayActivity.b50.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -737,7 +733,7 @@ public class PlayActivity extends Activity {
 		});
 		b51 = (Button) this.findViewById(R.id.b51);
 		assignPiece(b51, 5, 1);
-		this.b51.setOnClickListener(new OnClickListener() {
+		PlayActivity.b51.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -750,7 +746,7 @@ public class PlayActivity extends Activity {
 		});
 		b52 = (Button) this.findViewById(R.id.b52);
 		assignPiece(b52, 5, 2);
-		this.b52.setOnClickListener(new OnClickListener() {
+		PlayActivity.b52.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -763,7 +759,7 @@ public class PlayActivity extends Activity {
 		});
 		b53 = (Button) this.findViewById(R.id.b53);
 		assignPiece(b53, 5, 3);
-		this.b53.setOnClickListener(new OnClickListener() {
+		PlayActivity.b53.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -776,7 +772,7 @@ public class PlayActivity extends Activity {
 		});
 		b54 = (Button) this.findViewById(R.id.b54);
 		assignPiece(b54, 5, 4);
-		this.b54.setOnClickListener(new OnClickListener() {
+		PlayActivity.b54.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -789,7 +785,7 @@ public class PlayActivity extends Activity {
 		});
 		b55 = (Button) this.findViewById(R.id.b55);
 		assignPiece(b55, 5, 5);
-		this.b55.setOnClickListener(new OnClickListener() {
+		PlayActivity.b55.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -802,7 +798,7 @@ public class PlayActivity extends Activity {
 		});
 		b56 = (Button) this.findViewById(R.id.b56);
 		assignPiece(b56, 5, 6);
-		this.b56.setOnClickListener(new OnClickListener() {
+		PlayActivity.b56.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -815,7 +811,7 @@ public class PlayActivity extends Activity {
 		});
 		b57 = (Button) this.findViewById(R.id.b57);
 		assignPiece(b57, 5, 7);
-		this.b57.setOnClickListener(new OnClickListener() {
+		PlayActivity.b57.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -828,7 +824,7 @@ public class PlayActivity extends Activity {
 		});
 		b60 = (Button) this.findViewById(R.id.b60);
 		assignPiece(b60, 6, 0);
-		this.b60.setOnClickListener(new OnClickListener() {
+		PlayActivity.b60.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -841,7 +837,7 @@ public class PlayActivity extends Activity {
 		});
 		b61 = (Button) this.findViewById(R.id.b61);
 		assignPiece(b61, 6, 1);
-		this.b61.setOnClickListener(new OnClickListener() {
+		PlayActivity.b61.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -854,7 +850,7 @@ public class PlayActivity extends Activity {
 		});
 		b62 = (Button) this.findViewById(R.id.b62);
 		assignPiece(b62, 6, 2);
-		this.b62.setOnClickListener(new OnClickListener() {
+		PlayActivity.b62.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -867,7 +863,7 @@ public class PlayActivity extends Activity {
 		});
 		b63 = (Button) this.findViewById(R.id.b63);
 		assignPiece(b63, 6, 3);
-		this.b63.setOnClickListener(new OnClickListener() {
+		PlayActivity.b63.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -880,7 +876,7 @@ public class PlayActivity extends Activity {
 		});
 		b64 = (Button) this.findViewById(R.id.b64);
 		assignPiece(b64, 6, 4);
-		this.b64.setOnClickListener(new OnClickListener() {
+		PlayActivity.b64.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -893,7 +889,7 @@ public class PlayActivity extends Activity {
 		});
 		b65 = (Button) this.findViewById(R.id.b65);
 		assignPiece(b65, 6, 5);
-		this.b65.setOnClickListener(new OnClickListener() {
+		PlayActivity.b65.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -906,7 +902,7 @@ public class PlayActivity extends Activity {
 		});
 		b66 = (Button) this.findViewById(R.id.b66);
 		assignPiece(b66, 6, 6);
-		this.b66.setOnClickListener(new OnClickListener() {
+		PlayActivity.b66.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -919,7 +915,7 @@ public class PlayActivity extends Activity {
 		});
 		b67 = (Button) this.findViewById(R.id.b67);
 		assignPiece(b67, 6, 7);
-		this.b67.setOnClickListener(new OnClickListener() {
+		PlayActivity.b67.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -932,7 +928,7 @@ public class PlayActivity extends Activity {
 		});
 		b70 = (Button) this.findViewById(R.id.b70);
 		assignPiece(b70, 7, 0);
-		this.b70.setOnClickListener(new OnClickListener() {
+		PlayActivity.b70.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -945,7 +941,7 @@ public class PlayActivity extends Activity {
 		});
 		b71 = (Button) this.findViewById(R.id.b71);
 		assignPiece(b71, 7, 1);
-		this.b71.setOnClickListener(new OnClickListener() {
+		PlayActivity.b71.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -958,7 +954,7 @@ public class PlayActivity extends Activity {
 		});
 		b72 = (Button) this.findViewById(R.id.b72);
 		assignPiece(b72, 7, 2);
-		this.b72.setOnClickListener(new OnClickListener() {
+		PlayActivity.b72.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -971,7 +967,7 @@ public class PlayActivity extends Activity {
 		});
 		b73 = (Button) this.findViewById(R.id.b73);
 		assignPiece(b73, 7, 3);
-		this.b73.setOnClickListener(new OnClickListener() {
+		PlayActivity.b73.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -984,7 +980,7 @@ public class PlayActivity extends Activity {
 		});
 		b74 = (Button) this.findViewById(R.id.b74);
 		assignPiece(b74, 7, 4);
-		this.b74.setOnClickListener(new OnClickListener() {
+		PlayActivity.b74.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -997,7 +993,7 @@ public class PlayActivity extends Activity {
 		});
 		b75 = (Button) this.findViewById(R.id.b75);
 		assignPiece(b75, 7, 5);
-		this.b75.setOnClickListener(new OnClickListener() {
+		PlayActivity.b75.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -1010,7 +1006,7 @@ public class PlayActivity extends Activity {
 		});
 		b76 = (Button) this.findViewById(R.id.b76);
 		assignPiece(b76, 7, 6);
-		this.b76.setOnClickListener(new OnClickListener() {
+		PlayActivity.b76.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -1023,7 +1019,7 @@ public class PlayActivity extends Activity {
 		});
 		b77 = (Button) this.findViewById(R.id.b77);
 		assignPiece(b77, 7, 7);
-		this.b77.setOnClickListener(new OnClickListener() {
+		PlayActivity.b77.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -1141,87 +1137,70 @@ public class PlayActivity extends Activity {
 
 	public static void unselectAllPieces(){
 		
-		int row = 0;
-		int col = 0;
-		
-		for(Button b: buttons){
-			System.out.println("assigning: " + row + " : " + col);
-			assignPiece(b, row, col);
-			
-			col++;
-			if(col == 8){
-				col = 0;
-				row++;
-			}
-			
-		}
-	}
-	
-	public static void addButtons(){
-		buttons.add(b00);
-		buttons.add( b01);
-		buttons.add( b02);
-		buttons.add( b03);
-		buttons.add( b04);
-		buttons.add( b05);
-		buttons.add( b06);
-		buttons.add( b07);
-		buttons.add( b10);
-		buttons.add( b11);
-		buttons.add( b12);
-		buttons.add( b13);
-		buttons.add( b14);
-		buttons.add( b15);
-		buttons.add( b16);
-		buttons.add( b17);
-		buttons.add( b20);
-		buttons.add( b21);
-		buttons.add( b22);
-		buttons.add( b23);
-		buttons.add( b24);
-		buttons.add( b25);
-		buttons.add( b26);
-		buttons.add( b27);
-		buttons.add( b30);
-		buttons.add( b31);
-		buttons.add( b32);
-		buttons.add( b33);
-		buttons.add( b34);
-		buttons.add( b35);
-		buttons.add( b36);
-		buttons.add( b37);
-		buttons.add( b40);
-		buttons.add( b41);
-		buttons.add( b42);
-		buttons.add( b43);
-		buttons.add( b44);
-		buttons.add( b45);
-		buttons.add( b46);
-		buttons.add( b47);
-		buttons.add( b50);
-		buttons.add( b51);
-		buttons.add( b52);
-		buttons.add( b53);
-		buttons.add( b54);
-		buttons.add( b55);
-		buttons.add( b56);
-		buttons.add( b57);
-		buttons.add( b60);
-		buttons.add( b61);
-		buttons.add( b62);
-		buttons.add( b63);
-		buttons.add( b64);
-		buttons.add( b65);
-		buttons.add( b66);
-		buttons.add( b67);
-		buttons.add( b70);
-		buttons.add( b71);
-		buttons.add( b72);
-		buttons.add( b73);
-		buttons.add( b74);
-		buttons.add( b75);
-		buttons.add( b76);
-		buttons.add( b77);
+		assignPiece(b00, 0, 0);
+		assignPiece(b01, 0, 1);
+		assignPiece(b02, 0, 2);
+		assignPiece(b03, 0, 3);
+		assignPiece(b04, 0, 4);
+		assignPiece(b05, 0, 5);
+		assignPiece(b06, 0, 6);
+		assignPiece(b07, 0, 7);
+		assignPiece(b10, 1, 0);
+		assignPiece(b11, 1, 1);
+		assignPiece(b12, 1, 2);
+		assignPiece(b13, 1, 3);
+		assignPiece(b14, 1, 4);
+		assignPiece(b15, 1, 5);
+		assignPiece(b16, 1, 6);
+		assignPiece(b17, 1, 7);
+		assignPiece(b20, 2, 0);
+		assignPiece(b21, 2, 1);
+		assignPiece(b22, 2, 2);
+		assignPiece(b23, 2, 3);
+		assignPiece(b24, 2, 4);
+		assignPiece(b25, 2, 5);
+		assignPiece(b26, 2, 6);
+		assignPiece(b27, 2, 7);
+		assignPiece(b30, 3, 0);
+		assignPiece(b31, 3, 1);
+		assignPiece(b32, 3, 2);
+		assignPiece(b33, 3, 3);
+		assignPiece(b34, 3, 4);
+		assignPiece(b35, 3, 5);
+		assignPiece(b36, 3, 6);
+		assignPiece(b37, 3, 7);
+		assignPiece(b40, 4, 0);
+		assignPiece(b41, 4, 1);
+		assignPiece(b42, 4, 2);
+		assignPiece(b43, 4, 3);
+		assignPiece(b44, 4, 4);
+		assignPiece(b45, 4, 5);
+		assignPiece(b46, 4, 6);
+		assignPiece(b47, 4, 7);
+		assignPiece(b50, 5, 0);
+		assignPiece(b51, 5, 1);
+		assignPiece(b52, 5, 2);
+		assignPiece(b53, 5, 3);
+		assignPiece(b54, 5, 4);
+		assignPiece(b55, 5, 5);
+		assignPiece(b56, 5, 6);
+		assignPiece(b57, 5, 7);
+		assignPiece(b60, 6, 0);
+		assignPiece(b61, 6, 1);
+		assignPiece(b62, 6, 2);
+		assignPiece(b63, 6, 3);
+		assignPiece(b64, 6, 4);
+		assignPiece(b65, 6, 5);
+		assignPiece(b66, 6, 6);
+		assignPiece(b67, 6, 7);
+		assignPiece(b70, 7, 0);
+		assignPiece(b71, 7, 1);
+		assignPiece(b72, 7, 2);
+		assignPiece(b73, 7, 3);
+		assignPiece(b74, 7, 4);
+		assignPiece(b75, 7, 5);
+		assignPiece(b76, 7, 6);
+		assignPiece(b77, 7, 7);
 	}
 	
 	public static void printBoard() {

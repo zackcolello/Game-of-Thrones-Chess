@@ -17,7 +17,7 @@ public class Pawn extends Pieces {
 		// pawns also cannot go backwards.
 
 		// make sure pawn is not trying to move backwards
-		if (this.getName().charAt(0) == 'w') {
+		if (this.getName().charAt(0) == 'r') {
 
 			if (newLocation[0] - currentLocation[0] >= 1) {
 				return false;
@@ -59,7 +59,7 @@ public class Pawn extends Pieces {
 				// go backwards
 		
 		//white pawn
-		if (this.getName().charAt(0) == 'w') {
+		if (this.getName().charAt(0) == 'r') {
 			
 			if(currentLocation[0] - newLocation[0] == 1){
 				return true;

@@ -72,22 +72,22 @@ public class Chess {
 		pieces[1][6] = new Pawn('b');
 		pieces[1][7] = new Pawn('b');
 
-		pieces[7][0] = new Rook('w');
-		pieces[7][1] = new Knight('w');
-		pieces[7][2] = new Bishop('w');
-		pieces[7][3] = new Queen('w');
-		pieces[7][4] = new King('w');
-		pieces[7][5] = new Bishop('w');
-		pieces[7][6] = new Knight('w');
-		pieces[7][7] = new Rook('w');
-		pieces[6][0] = new Pawn('w');
-		pieces[6][1] = new Pawn('w');
-		pieces[6][2] = new Pawn('w');
-		pieces[6][3] = new Pawn('w');
-		pieces[6][4] = new Pawn('w');
-		pieces[6][5] = new Pawn('w');
-		pieces[6][6] = new Pawn('w');
-		pieces[6][7] = new Pawn('w');
+		pieces[7][0] = new Rook('r');
+		pieces[7][1] = new Knight('r');
+		pieces[7][2] = new Bishop('r');
+		pieces[7][3] = new Queen('r');
+		pieces[7][4] = new King('r');
+		pieces[7][5] = new Bishop('r');
+		pieces[7][6] = new Knight('r');
+		pieces[7][7] = new Rook('r');
+		pieces[6][0] = new Pawn('r');
+		pieces[6][1] = new Pawn('r');
+		pieces[6][2] = new Pawn('r');
+		pieces[6][3] = new Pawn('r');
+		pieces[6][4] = new Pawn('r');
+		pieces[6][5] = new Pawn('r');
+		pieces[6][6] = new Pawn('r');
+		pieces[6][7] = new Pawn('r');
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class Chess {
 
 				if (pieces[i][j] != null) {
 
-					if (pieces[i][j].getName().charAt(0) == 'w') {
+					if (pieces[i][j].getName().charAt(0) == 'r') {
 						targetKing = bKLocation;
 					} else {
 						targetKing = wKLocation;
@@ -617,7 +617,7 @@ public class Chess {
 
 		boolean drawSetThisTurn = false; // used to see when draw was set
 		boolean potentialDraw = false; // used to see if draw has been requested
-		char whosTurn = 'w'; // Keeps track of whos turn it is
+		char whosTurn = 'r'; // Keeps track of whos turn it is
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {
@@ -630,7 +630,7 @@ public class Chess {
 					System.out.println("Checkmate");
 
 					// game over, print who won based on who was just in check
-					if (isInCheck == 'w') {
+					if (isInCheck == 'r') {
 						System.out.println("Black wins");
 					} else {
 						System.out.println("White wins");
@@ -649,8 +649,8 @@ public class Chess {
 				}
 			}
 
-			if (whosTurn == 'w') {
-				System.out.print("White's move: ");
+			if (whosTurn == 'r') {
+				System.out.print("Red's move: ");
 			} else {
 				System.out.print("Black's move: ");
 			}
@@ -688,7 +688,7 @@ public class Chess {
 
 				if (input.get(0).equals("resign")) {
 
-					if (whosTurn == 'w') {
+					if (whosTurn == 'r') {
 						System.out.println("Black wins");
 						return;
 					} else {
@@ -755,7 +755,7 @@ public class Chess {
 			} else if (currentPiece.getName().charAt(0) != whosTurn) {
 
 				System.out.print("Error: Trying to move a ");
-				if (whosTurn == 'w') {
+				if (whosTurn == 'r') {
 					System.out.println("Black piece when it is White's turn.");
 				} else {
 					System.out.println("White piece when it is Black's turn.");
@@ -951,7 +951,7 @@ public class Chess {
 								continue;
 							}
 						}
-						if (whosTurn == 'w') {
+						if (whosTurn == 'r') {
 							int[] king = { 7, 4 };
 							if (endLocation[1] == 6) {
 								int[] rook = { 7, 7 };
@@ -1072,7 +1072,7 @@ public class Chess {
 				// If piece is not there, nothing to capture
 				if (pieces[endLocation[0]][endLocation[1]] == null) {
 					// check for en Passant
-					if ((whosTurn == 'w')
+					if ((whosTurn == 'r')
 							&& (currentPiece.getName().charAt(1) == 'p')) {
 
 						if ((pieces[endLocation[0] + 1][endLocation[1]] != null)
@@ -1223,10 +1223,10 @@ public class Chess {
 			}
 
 			// alternate boolean character for whose turn it is
-			if (whosTurn == 'w') {
+			if (whosTurn == 'r') {
 				whosTurn = 'b';
 			} else {
-				whosTurn = 'w';
+				whosTurn = 'r';
 			}
 		}
 

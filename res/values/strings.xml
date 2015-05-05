@@ -18,5 +18,9 @@
     <string name="bluesmove">Blue\'s Move</string>
     <string name="invalidmove">Invalid move</string>
     
-    
+    <!--  For buttons -->
+    <string name="savegame">Save Game</string>
+    <string name="no">No</string>
+    <string name="yesdraw">Draw</string>
+    <string name="home">Home</string>
 </resources>

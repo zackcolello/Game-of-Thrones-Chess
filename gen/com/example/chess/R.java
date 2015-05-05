@@ -1693,7 +1693,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f09008c;
+        public static final int action_settings=0x7f09008f;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int aibutton=0x7f090045;
         public static final int always=0x7f090014;
@@ -1763,6 +1763,8 @@ containing a value of this type.
         public static final int b77=0x7f090089;
         public static final int backbutton=0x7f090042;
         public static final int beginning=0x7f09001b;
+        public static final int body=0x7f09008c;
+        public static final int cancel=0x7f09008e;
         public static final int checkbox=0x7f090029;
         public static final int collapseActionView=0x7f090015;
         public static final int decor_content_parent=0x7f09002f;
@@ -1787,6 +1789,7 @@ containing a value of this type.
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int ok=0x7f09008d;
         public static final int playbackbutton=0x7f090043;
         public static final int playbutton=0x7f090041;
         public static final int progress_circular=0x7f090007;
@@ -1876,7 +1879,8 @@ containing a value of this type.
         public static final int activity_main=0x7f030016;
         public static final int listgameslayout=0x7f030017;
         public static final int playlayout=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int reply=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1946,14 +1950,20 @@ containing a value of this type.
         public static final int button=0x7f0a0013;
         public static final int draw=0x7f0a001b;
         public static final int hello_world=0x7f0a0011;
+        public static final int home=0x7f0a0023;
         public static final int homebutton=0x7f0a001a;
         public static final int invalidmove=0x7f0a001f;
+        public static final int no=0x7f0a0021;
         public static final int play=0x7f0a0014;
         public static final int playback=0x7f0a0017;
         public static final int recgame=0x7f0a0015;
         public static final int redsmove=0x7f0a001d;
         public static final int resign=0x7f0a001c;
+        /**   For buttons 
+         */
+        public static final int savegame=0x7f0a0020;
         public static final int undobutton=0x7f0a0018;
+        public static final int yesdraw=0x7f0a0022;
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0b00cf;

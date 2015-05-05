@@ -1,8 +1,12 @@
 package com.example.chess;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -27,6 +31,7 @@ public class PlayActivity extends Activity {
 	private static Button aiButton;
 	private static Button homeButton;
 	private static Button drawButton;
+	private static Button resignButton;
 	private static TextView text;
 	private static TextView toptext;
 
@@ -35,12 +40,15 @@ public class PlayActivity extends Activity {
 	private static boolean pieceSelected = false;
 	static int[] endLoc = new int[2];
 
+	static char isInCheck;
+
 	// For chess board
 	static String[][] board;
 	static Pieces[][] pieces;
 	static ArrayList<Pieces> graveyard;
-	static Pieces lastMove = null;
-	static char isInCheck;
+	static int[] lastMove = new int[4];
+	static boolean canUndo = false;
+	static Pieces pieceTaken = null;
 	static char whosTurn = 'r';
 
 	// Chess board buttons
@@ -115,11 +123,53 @@ public class PlayActivity extends Activity {
 
 		setContentView(R.layout.playlayout);
 
+		// set last move to 0
+		for (int i = 0; i < lastMove.length; i++) {
+			lastMove[i] = -1;
+		}
+
 		this.undoButton = (Button) this.findViewById(R.id.undobutton);
 		this.undoButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Here it will undo the last move somehow
+				// Here it will undo the last move
+
+				if (!canUndo) {
+					pieceSelected = false;
+					unselectAllPieces();
+					toptext.setText("Invalid Move");
+					return;
+				}
+
+				if (lastMove[0] != -1) {
+					pieces[lastMove[0]][lastMove[1]] = pieces[lastMove[2]][lastMove[3]];
+
+					// put back old piece if there was one
+					if (pieceTaken == null) {
+
+						pieces[lastMove[2]][lastMove[3]] = null;
+
+					} else {
+						pieces[lastMove[2]][lastMove[3]] = pieceTaken;
+					}
+
+					// change turn
+					if (whosTurn == 'r') {
+						whosTurn = 'b';
+						text.setTextColor(Color.parseColor("#0066CC"));
+						text.setText("Blue's Move");
+					} else {
+						whosTurn = 'r';
+						text.setTextColor(Color.parseColor("#E80000"));
+						text.setText("Red's Move");
+					}
+					canUndo = false;
+					pieceTaken = null;
+					pieceSelected = false;
+					unselectAllPieces();
+					return;
+
+				}
 			}
 		});
 
@@ -128,6 +178,130 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// Here it will do an AI move
+
+				// loop until we find a valid piece and move it
+				while (true) {
+					Random rand = new Random();
+					int row = rand.nextInt(8);
+					Random rand2 = new Random();
+					int col = rand2.nextInt(8);
+
+					int[] startLoc = new int[2];
+					startLoc[0] = row;
+					startLoc[1] = col;
+
+					// Check to see if piece is the right color
+					if (pieces[row][col] != null) {
+						if (pieces[row][col].getName().charAt(0) == whosTurn) {
+
+							// Check all pieces, see if valid move
+							for (int i = 0; i < 8; i++) {
+								for (int j = 0; j < 8; j++) {
+
+									int[] endLoc = new int[2];
+									endLoc[0] = i;
+									endLoc[1] = j;
+
+									// check to see if valid move and nobody is
+									// there
+									if ((pieces[i][j] == null)
+											&& pieces[row][col].isValidMove(
+													startLoc, endLoc)) {
+
+										// see if no pieces in way
+										if (!piecesInTheWay(startLoc, endLoc)) {
+
+											// Make the move!
+											pieceTaken = pieces[i][j];
+											pieces[row][col].incrementMoves();
+											pieces[i][j] = pieces[row][col];
+											pieces[row][col] = null;
+
+											if (isInCheck() && isInCheck == whosTurn) {
+												pieces[row][col] = pieces[i][j];
+												pieces[i][j] = pieceTaken;
+												continue;
+											}
+											
+											// store last move
+											lastMove[0] = row;
+											lastMove[1] = col;
+											lastMove[2] = i;
+											lastMove[3] = j;
+
+											// change turn
+											if (whosTurn == 'r') {
+												whosTurn = 'b';
+												text.setTextColor(Color
+														.parseColor("#0066CC"));
+												text.setText("Blue's Move");
+											} else {
+												whosTurn = 'r';
+												text.setTextColor(Color
+														.parseColor("#E80000"));
+												text.setText("Red's Move");
+											}
+											pieceSelected = false;
+											canUndo = true;
+											unselectAllPieces();
+											return;
+										}
+
+										// or see if it can capture it
+									} else if ((pieces[i][j] != null)
+											&& (pieces[row][col]
+													.isValidCapture(startLoc,
+															endLoc))
+											&& (pieces[row][col].getName()
+													.charAt(0) != pieces[i][j]
+													.getName().charAt(0))) {
+
+										// see if no pieces in way
+										if (!piecesInTheWay(startLoc, endLoc)) {
+
+											// Make the move!
+											pieces[row][col].incrementMoves();
+											pieceTaken = pieces[i][j];
+											pieces[i][j] = pieces[row][col];
+											pieces[row][col] = null;
+
+											if (isInCheck() && isInCheck == whosTurn) {
+												pieces[row][col] = pieces[i][j];
+												pieces[i][j] = pieceTaken;
+												continue;
+											}
+											
+											// store last move
+											lastMove[0] = row;
+											lastMove[1] = col;
+											lastMove[2] = i;
+											lastMove[3] = j;
+
+											// change turn
+											if (whosTurn == 'r') {
+												whosTurn = 'b';
+												text.setTextColor(Color
+														.parseColor("#0066CC"));
+												text.setText("Blue's Move");
+											} else {
+												whosTurn = 'r';
+												text.setTextColor(Color
+														.parseColor("#E80000"));
+												text.setText("Red's Move");
+											}
+											canUndo = true;
+											pieceSelected = false;
+											unselectAllPieces();
+											return;
+										}
+									}
+								}
+							}
+
+						}
+					}
+				}
+
 			}
 		});
 
@@ -145,6 +319,138 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// this will start a draw
+				AlertDialog.Builder drawAlert = new AlertDialog.Builder(
+						PlayActivity.this);
+
+				drawAlert.setTitle("Draw?");
+				if (whosTurn == 'r') {
+					drawAlert
+							.setMessage("Red has requested a draw. Blue, would you like to call it a draw?");
+				} else {
+					drawAlert
+							.setMessage("Blue has requested a draw. Red, would you like to call it a draw?");
+				}
+
+				drawAlert.setNegativeButton(
+						getResources().getString(R.string.no),
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// Do nothing
+
+							}
+						}).setIcon(android.R.drawable.ic_dialog_alert);
+
+				drawAlert.setPositiveButton(
+						getResources().getString(R.string.yesdraw),
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+								// Say game over
+								AlertDialog.Builder tie = new AlertDialog.Builder(
+										PlayActivity.this);
+
+								tie.setTitle("Game Over");
+								tie.setMessage("It's a draw!");
+
+								tie.setNegativeButton(
+										getResources().getString(R.string.home),
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int which) {
+												// Go to home screen
+												startActivity(new Intent(
+														getApplicationContext(),
+														MainActivity.class));
+
+											}
+										}).setIcon(
+										android.R.drawable.ic_dialog_alert);
+								tie.show();
+
+							}
+						});
+				drawAlert.show();
+
+			}
+		});
+
+		this.resignButton = (Button) this.findViewById(R.id.resign);
+		this.resignButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder resignAlert = new AlertDialog.Builder(
+						PlayActivity.this);
+
+				resignAlert.setTitle("Game Over");
+				if (whosTurn == 'r') {
+					resignAlert
+							.setMessage("Red has resigned. Blue wins! Do you want to save this game?");
+				} else {
+					resignAlert
+							.setMessage("Blue has resigned. Red wins! Do you want to save this game?");
+				}
+
+				resignAlert.setNegativeButton(
+						getResources().getString(R.string.no),
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// Go to home screen
+								startActivity(new Intent(
+										getApplicationContext(),
+										MainActivity.class));
+
+							}
+						}).setIcon(android.R.drawable.ic_dialog_alert);
+				resignAlert.setPositiveButton(
+						getResources().getString(R.string.savegame),
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+								// Second dialog box, enters name of game
+
+								final Dialog commentDialog = new Dialog(
+										PlayActivity.this);
+								commentDialog.setTitle("Save Game");
+								commentDialog.setContentView(R.layout.reply);
+								Button okBtn = (Button) commentDialog
+										.findViewById(R.id.ok);
+								okBtn.setOnClickListener(new View.OnClickListener() {
+
+									@Override
+									public void onClick(View v) {
+										// TODO: read in string and stuff to
+										// save the game
+										startActivity(new Intent(
+												getApplicationContext(),
+												MainActivity.class));
+										commentDialog.dismiss();
+									}
+								});
+								Button cancelBtn = (Button) commentDialog
+										.findViewById(R.id.cancel);
+								cancelBtn
+										.setOnClickListener(new View.OnClickListener() {
+
+											@Override
+											public void onClick(View v) {
+
+												startActivity(new Intent(
+														getApplicationContext(),
+														MainActivity.class));
+												commentDialog.dismiss();
+											}
+										});
+								commentDialog.show();
+
+							}
+						});
+				resignAlert.show();
+
 			}
 		});
 
@@ -1326,10 +1632,25 @@ public class PlayActivity extends Activity {
 
 						// check to make sure there are no pieces in the way.
 						if (!piecesInTheWay(prevSelectedPiece, endLoc)) {
-							System.out.println("that move was valid");
+
+							pieceTaken = pieces[endLoc[0]][endLoc[1]];
 							// remove pieces pieces
 							pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
 							pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+
+							if (isInCheck() && isInCheck == whosTurn) {
+								toptext.setText("Invalid Move");
+								pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = pieces[endLoc[0]][endLoc[1]];
+								pieces[endLoc[0]][endLoc[1]] = pieceTaken;
+								return;
+							}
+							
+							
+							// store last move
+							lastMove[0] = prevSelectedPiece[0];
+							lastMove[1] = prevSelectedPiece[1];
+							lastMove[2] = endLoc[0];
+							lastMove[3] = endLoc[1];
 
 							if (whosTurn == 'r') {
 								whosTurn = 'b';
@@ -1345,14 +1666,13 @@ public class PlayActivity extends Activity {
 						} else {
 							pieceSelected = false;
 							unselectAllPieces();
-							toptext.setText("Error: Invalid Move");
+							toptext.setText("Invalid Move");
 							return;
-							// TODO: throw error
 						}
 					} else {
 						pieceSelected = false;
 						unselectAllPieces();
-						toptext.setText("Error: Invalid Move");
+						toptext.setText("Invalid Move");
 						return;
 
 					}
@@ -1360,12 +1680,26 @@ public class PlayActivity extends Activity {
 					// there is not a piece in new location
 				} else {
 					if (!piecesInTheWay(prevSelectedPiece, endLoc)) {
-						System.out.println("that move was valid");
 						// remove pieces pieces
+						pieceTaken = pieces[endLoc[0]][endLoc[1]];
 						pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
 								.incrementMoves();
 						pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
 						pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+
+						if (isInCheck() && isInCheck == whosTurn) {
+							toptext.setText("Invalid Move");
+							pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = pieces[endLoc[0]][endLoc[1]];
+							pieces[endLoc[0]][endLoc[1]] = pieceTaken;
+							return;
+						}
+						
+						// store last move
+						lastMove[0] = prevSelectedPiece[0];
+						lastMove[1] = prevSelectedPiece[1];
+						lastMove[2] = endLoc[0];
+						lastMove[3] = endLoc[1];
+
 						if (whosTurn == 'r') {
 							whosTurn = 'b';
 							text.setTextColor(Color.parseColor("#0066CC"));
@@ -1380,9 +1714,8 @@ public class PlayActivity extends Activity {
 					} else {
 						pieceSelected = false;
 						unselectAllPieces();
-						toptext.setText("Error: Invalid Move");
+						toptext.setText("Invalid Move");
 						return;
-						// TODO: throw error
 					}
 
 				}
@@ -1395,7 +1728,7 @@ public class PlayActivity extends Activity {
 				if (pieces[endLoc[0]][endLoc[1]] == null) {
 					pieceSelected = false;
 					unselectAllPieces();
-					toptext.setText("Error: Invalid Move");
+					toptext.setText("Invalid Move");
 					return;
 				}
 
@@ -1406,7 +1739,7 @@ public class PlayActivity extends Activity {
 						.getName().charAt(0)) {
 					pieceSelected = false;
 					unselectAllPieces();
-					toptext.setText("Error: Invalid Move");
+					toptext.setText("Invalid Move");
 					return;
 				}
 
@@ -1417,13 +1750,25 @@ public class PlayActivity extends Activity {
 								.getName().charAt(0)) {
 					// Add captured piece to graveyard, move piece there
 
-					Pieces tempPiece = pieces[endLoc[0]][endLoc[1]];
+					pieceTaken = pieces[endLoc[0]][endLoc[1]];
 
 					pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
 							.incrementMoves();
 					pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
-					lastMove = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
 					pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+
+					if (isInCheck() && isInCheck == whosTurn) {
+						toptext.setText("Invalid Move");
+						pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = pieces[endLoc[0]][endLoc[1]];
+						pieces[endLoc[0]][endLoc[1]] = pieceTaken;
+						return;
+					}
+					
+					// store last move
+					lastMove[0] = prevSelectedPiece[0];
+					lastMove[1] = prevSelectedPiece[1];
+					lastMove[2] = endLoc[0];
+					lastMove[3] = endLoc[1];
 
 					// change piece
 					if (whosTurn == 'r') {
@@ -1437,16 +1782,30 @@ public class PlayActivity extends Activity {
 					}
 
 				} else {
+					canUndo = true;
 					pieceSelected = false;
 					unselectAllPieces();
-					toptext.setText("Error: Invalid Move");
+					toptext.setText("Invalid Move");
 					return;
 				}
 
 			}
+			canUndo = true;
 			toptext.setText("");
 			pieceSelected = false;
 			unselectAllPieces();
+
+			System.out.println("about to check check");
+			if (isInCheck()) {
+				System.out.println("in check now");
+				toptext.setText("Check!");
+				
+				pieceSelected = false;
+				unselectAllPieces();
+				return;
+
+			}
+
 			return;
 
 			// user has clicked a start location
@@ -1609,6 +1968,62 @@ public class PlayActivity extends Activity {
 			}
 			Log.i("Chess", "");
 		}
+	}
+
+	public static boolean isInCheck() {
+
+		// Loop through pieces array, check if king would be a valid capture
+
+		int[] rkLocation = new int[2];
+		int[] bKLocation = new int[2];
+		int[] targetKing = new int[2]; // used to know which king to search for
+
+		// Get location of both kings to be used
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				if (pieces[i][j] != null) {
+
+					if (pieces[i][j].getName().equals("rK")) {
+						rkLocation[0] = i;
+						rkLocation[1] = j;
+					}
+					if (pieces[i][j].getName().equals("bK")) {
+						bKLocation[0] = i;
+						bKLocation[1] = j;
+					}
+				}
+			}
+		}
+
+		// Loop through board, see if a piece can capture a king.
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+
+				if (pieces[i][j] != null) {
+
+					if (pieces[i][j].getName().charAt(0) == 'r') {
+						targetKing = bKLocation;
+					} else {
+						targetKing = rkLocation;
+					}
+
+					int[] temp = new int[2];
+					temp[0] = i;
+					temp[1] = j;
+
+					if (pieces[i][j].isValidCapture(temp, targetKing)
+							&& !piecesInTheWay(temp, targetKing)) {
+						isInCheck = pieces[targetKing[0]][targetKing[1]]
+								.getName().charAt(0);
+						return true;
+					}
+
+				}
+			}
+		}
+
+		return false;
+
 	}
 
 	public static boolean piecesInTheWay(int[] startLocation, int[] endLoc) {

@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import chessPieces.Bishop;
+import chessPieces.Chess;
 import chessPieces.King;
 import chessPieces.Knight;
 import chessPieces.Pawn;
@@ -25,10 +27,13 @@ public class PlayActivity extends Activity {
 	private static Button aiButton;
 	private static Button homeButton;
 	private static Button drawButton;
+	private static TextView text;
+	private static TextView toptext;
 
 	private static int[] prevSelectedPiece = new int[2];
 	private static int[] selectedPiece = new int[2];
 	private static boolean pieceSelected = false;
+	static int[] endLoc = new int[2];
 
 	// For chess board
 	static String[][] board;
@@ -36,6 +41,7 @@ public class PlayActivity extends Activity {
 	static ArrayList<Pieces> graveyard;
 	static Pieces lastMove = null;
 	static char isInCheck;
+	static char whosTurn = 'r';
 
 	// Chess board buttons
 	private static Button b00;
@@ -142,9 +148,27 @@ public class PlayActivity extends Activity {
 			}
 		});
 
+		this.text = (TextView) this.findViewById(R.id.text);
+		text.setTextColor(Color.parseColor("#E80000"));
+		this.text.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
+
+		this.toptext = (TextView) this.findViewById(R.id.toptext);
+		toptext.setTextColor(Color.parseColor("#ffffff"));
+		this.toptext.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			}
+		});
+
 		createChessBoard();
 		updateBoard();
-		//printBoard();
+		// printBoard();
 
 	}
 
@@ -207,11 +231,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 0;
 				selectPiece(b00, 0, 0);
@@ -225,11 +247,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 1;
 				selectPiece(b01, 0, 1);
@@ -243,11 +263,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 2;
 				selectPiece(b02, 0, 2);
@@ -261,11 +279,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 3;
 				selectPiece(b03, 0, 3);
@@ -279,11 +295,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 4;
 				selectPiece(b04, 0, 4);
@@ -297,11 +311,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 5;
 				selectPiece(b05, 0, 5);
@@ -315,11 +327,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 6;
 				selectPiece(b06, 0, 6);
@@ -333,11 +343,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 0;
 				selectedPiece[1] = 7;
 				selectPiece(b07, 0, 7);
@@ -351,11 +359,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 0;
 				selectPiece(b10, 1, 0);
@@ -369,11 +375,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 1;
 				selectPiece(b11, 1, 1);
@@ -387,11 +391,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 2;
 				selectPiece(b12, 1, 2);
@@ -405,11 +407,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 3;
 				selectPiece(b13, 1, 3);
@@ -423,11 +423,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 4;
 				selectPiece(b14, 1, 4);
@@ -441,11 +439,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 5;
 				selectPiece(b15, 1, 5);
@@ -459,11 +455,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 6;
 				selectPiece(b16, 1, 6);
@@ -477,11 +471,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 1;
 				selectedPiece[1] = 7;
 				selectPiece(b17, 1, 7);
@@ -495,11 +487,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 0;
 				selectPiece(b20, 2, 0);
@@ -513,11 +503,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 1;
 				selectPiece(b21, 2, 1);
@@ -531,11 +519,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 2;
 				selectPiece(b22, 2, 2);
@@ -549,11 +535,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 3;
 				selectPiece(b23, 2, 3);
@@ -567,11 +551,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 4;
 				selectPiece(b24, 2, 4);
@@ -585,11 +567,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 5;
 				selectPiece(b25, 2, 5);
@@ -603,11 +583,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 6;
 				selectPiece(b26, 2, 6);
@@ -621,11 +599,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 2;
 				selectedPiece[1] = 7;
 				selectPiece(b27, 2, 7);
@@ -639,11 +615,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 0;
 				selectPiece(b30, 3, 0);
@@ -657,11 +631,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 1;
 				selectPiece(b31, 3, 1);
@@ -675,11 +647,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 2;
 				selectPiece(b32, 3, 2);
@@ -693,11 +663,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 3;
 				selectPiece(b33, 3, 3);
@@ -711,11 +679,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 4;
 				selectPiece(b34, 3, 4);
@@ -729,11 +695,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 5;
 				selectPiece(b35, 3, 5);
@@ -747,11 +711,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 6;
 				selectPiece(b36, 3, 6);
@@ -765,11 +727,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 3;
 				selectedPiece[1] = 7;
 				selectPiece(b37, 3, 7);
@@ -783,11 +743,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 0;
 				selectPiece(b40, 4, 0);
@@ -801,11 +759,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 1;
 				selectPiece(b41, 4, 1);
@@ -819,11 +775,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 2;
 				selectPiece(b42, 4, 2);
@@ -837,11 +791,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 3;
 				selectPiece(b43, 4, 3);
@@ -855,11 +807,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 4;
 				selectPiece(b44, 4, 4);
@@ -873,11 +823,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 5;
 				selectPiece(b45, 4, 5);
@@ -891,11 +839,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 6;
 				selectPiece(b46, 4, 6);
@@ -909,11 +855,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 4;
 				selectedPiece[1] = 7;
 				selectPiece(b47, 4, 7);
@@ -927,11 +871,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 0;
 				selectPiece(b50, 5, 0);
@@ -945,11 +887,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 1;
 				selectPiece(b51, 5, 1);
@@ -963,11 +903,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 2;
 				selectPiece(b52, 5, 2);
@@ -981,11 +919,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 3;
 				selectPiece(b53, 5, 3);
@@ -999,11 +935,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 4;
 				selectPiece(b54, 5, 4);
@@ -1017,11 +951,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 5;
 				selectPiece(b55, 5, 5);
@@ -1035,11 +967,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 6;
 				selectPiece(b56, 5, 6);
@@ -1053,11 +983,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 5;
 				selectedPiece[1] = 7;
 				selectPiece(b57, 5, 7);
@@ -1071,11 +999,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 0;
 				selectPiece(b60, 6, 0);
@@ -1089,11 +1015,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 1;
 				selectPiece(b61, 6, 1);
@@ -1107,11 +1031,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 2;
 				selectPiece(b62, 6, 2);
@@ -1125,11 +1047,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 3;
 				selectPiece(b63, 6, 3);
@@ -1143,11 +1063,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 4;
 				selectPiece(b64, 6, 4);
@@ -1161,11 +1079,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 5;
 				selectPiece(b65, 6, 5);
@@ -1179,11 +1095,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 6;
 				selectPiece(b66, 6, 6);
@@ -1197,11 +1111,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 6;
 				selectedPiece[1] = 7;
 				selectPiece(b67, 6, 7);
@@ -1215,11 +1127,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 0;
 				selectPiece(b70, 7, 0);
@@ -1233,11 +1143,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 1;
 				selectPiece(b71, 7, 1);
@@ -1251,11 +1159,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 2;
 				selectPiece(b72, 7, 2);
@@ -1269,11 +1175,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 3;
 				selectPiece(b73, 7, 3);
@@ -1287,11 +1191,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 4;
 				selectPiece(b74, 7, 4);
@@ -1305,11 +1207,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 5;
 				selectPiece(b75, 7, 5);
@@ -1323,11 +1223,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 6;
 				selectPiece(b76, 7, 6);
@@ -1341,11 +1239,9 @@ public class PlayActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if (prevSelectedPiece != null) {
-					prevSelectedPiece[0] = selectedPiece[0];
-					prevSelectedPiece[1] = selectedPiece[1];
-				}
-
+				;
+				;
+				;
 				selectedPiece[0] = 7;
 				selectedPiece[1] = 7;
 				selectPiece(b77, 7, 7);
@@ -1407,32 +1303,160 @@ public class PlayActivity extends Activity {
 
 	public static void selectPiece(Button b, int row, int col) {
 
-		
+		// user has clicked an end location
 		if (pieceSelected) {
 
-			
-			if(pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] == null){
+			endLoc[0] = row;
+			endLoc[1] = col;
+
+			// Check to see if the move is valid
+			if (pieces[prevSelectedPiece[0]][prevSelectedPiece[1]].isValidMove(
+					prevSelectedPiece, endLoc)) {
+
+				// check to see if there is a piece at the end location
+				if (pieces[endLoc[0]][endLoc[1]] != null) {
+
+					// if there is a piece of different color, check if it can
+					// capture it
+					if (pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+							.isValidCapture(prevSelectedPiece, endLoc)
+							&& pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+									.getName().charAt(0) != pieces[endLoc[0]][endLoc[1]]
+									.getName().charAt(0)) {
+
+						// check to make sure there are no pieces in the way.
+						if (!piecesInTheWay(prevSelectedPiece, endLoc)) {
+							System.out.println("that move was valid");
+							// remove pieces pieces
+							pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
+							pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+
+							if (whosTurn == 'r') {
+								whosTurn = 'b';
+								text.setTextColor(Color.parseColor("#0066CC"));
+								text.setText("Blue's Move");
+							} else {
+								whosTurn = 'r';
+								text.setTextColor(Color.parseColor("#E80000"));
+								text.setText("Red's Move");
+							}
+
+							// There are pieces in the way
+						} else {
+							pieceSelected = false;
+							unselectAllPieces();
+							toptext.setText("Error: Invalid Move");
+							return;
+							// TODO: throw error
+						}
+					} else {
+						pieceSelected = false;
+						unselectAllPieces();
+						toptext.setText("Error: Invalid Move");
+						return;
+
+					}
+
+					// there is not a piece in new location
+				} else {
+					if (!piecesInTheWay(prevSelectedPiece, endLoc)) {
+						System.out.println("that move was valid");
+						// remove pieces pieces
+						pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+								.incrementMoves();
+						pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
+						pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+						if (whosTurn == 'r') {
+							whosTurn = 'b';
+							text.setTextColor(Color.parseColor("#0066CC"));
+							text.setText("Blue's Move");
+						} else {
+							whosTurn = 'r';
+							text.setTextColor(Color.parseColor("#E80000"));
+							text.setText("Red's Move");
+						}
+
+						// There are pieces in the way
+					} else {
+						pieceSelected = false;
+						unselectAllPieces();
+						toptext.setText("Error: Invalid Move");
+						return;
+						// TODO: throw error
+					}
+
+				}
+
+				// not valid move, could be valid capture by a pawn
+			} else {
+				// TODO: pawn check thing
+
+				// no piece there, nothing to capture
+				if (pieces[endLoc[0]][endLoc[1]] == null) {
+					pieceSelected = false;
+					unselectAllPieces();
+					toptext.setText("Error: Invalid Move");
+					return;
+				}
+
+				// Before checking if it can capture the piece, make sure it
+				// is a different color
+				else if (pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+						.getName().charAt(0) == pieces[endLoc[0]][endLoc[1]]
+						.getName().charAt(0)) {
+					pieceSelected = false;
+					unselectAllPieces();
+					toptext.setText("Error: Invalid Move");
+					return;
+				}
+
+				else if (pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+						.isValidCapture(prevSelectedPiece, endLoc)
+						&& pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+								.getName().charAt(0) != pieces[endLoc[0]][endLoc[1]]
+								.getName().charAt(0)) {
+					// Add captured piece to graveyard, move piece there
+
+					Pieces tempPiece = pieces[endLoc[0]][endLoc[1]];
+
+					pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+							.incrementMoves();
+					pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
+					lastMove = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
+					pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+
+					// change piece
+					if (whosTurn == 'r') {
+						whosTurn = 'b';
+						text.setTextColor(Color.parseColor("#0066CC"));
+						text.setText("Blue's Move");
+					} else {
+						whosTurn = 'r';
+						text.setTextColor(Color.parseColor("#E80000"));
+						text.setText("Red's Move");
+					}
+
+				} else {
+					pieceSelected = false;
+					unselectAllPieces();
+					toptext.setText("Error: Invalid Move");
+					return;
+				}
+
+			}
+			toptext.setText("");
+			pieceSelected = false;
+			unselectAllPieces();
+			return;
+
+			// user has clicked a start location
+		} else {
+
+			// make sure user is selecting the right color piece & not null char
+			if (pieces[selectedPiece[0]][selectedPiece[1]] == null) {
 				return;
 			}
-			
-			int[] temp = new int[2];
-			temp[0] = row;
-			temp[1] = col;
-
-			System.out.println("new loc is: " + temp[0] + ":" + temp[1]
-					+ ", old loc is: " + prevSelectedPiece[0] + ":"
-					+ prevSelectedPiece[1]);
-			
-			if (pieces[prevSelectedPiece[0]][prevSelectedPiece[1]].isValidMove(
-					prevSelectedPiece, temp)) {
-				System.out.println("that move was valid");
-				pieceSelected = false;
-				return;
-			} else {
-				System.out.println("that move was not valid");
-				pieceSelected = true;
-				selectedPiece[0] = prevSelectedPiece[0];
-				selectedPiece[1] = prevSelectedPiece[1];
+			if (pieces[selectedPiece[0]][selectedPiece[1]].getName().charAt(0) != whosTurn) {
 				return;
 			}
 		}
@@ -1440,6 +1464,8 @@ public class PlayActivity extends Activity {
 		// if a piece is selected, unselect all
 		unselectAllPieces();
 
+		prevSelectedPiece[0] = row;
+		prevSelectedPiece[1] = col;
 		// selecting another piece
 		if (pieces[row][col] != null) {
 			String name = pieces[row][col].getName();
@@ -1584,4 +1610,129 @@ public class PlayActivity extends Activity {
 			Log.i("Chess", "");
 		}
 	}
+
+	public static boolean piecesInTheWay(int[] startLocation, int[] endLoc) {
+
+		// Vertical move, columns the same, rows different
+		if (startLocation[1] == endLoc[1]) {
+
+			int largest = startLocation[0] > endLoc[0] ? startLocation[0]
+					: endLoc[0];
+
+			int smallest = startLocation[0] < endLoc[0] ? startLocation[0]
+					: endLoc[0];
+
+			for (int i = smallest + 1; i < largest; i++) {
+				if (pieces[i][startLocation[1]] != null) {
+					return true;
+				}
+			}
+			// Horizontal move, row the same, columns different
+		} else if (startLocation[0] == endLoc[0]) {
+
+			int largest = startLocation[1] > endLoc[1] ? startLocation[1]
+					: endLoc[1];
+
+			int smallest = startLocation[1] < endLoc[1] ? startLocation[1]
+					: endLoc[1];
+
+			for (int i = smallest + 1; i < largest; i++) {
+				if (pieces[startLocation[0]][i] != null) {
+					return true;
+				}
+			}
+			// Diagonal move or knight move. Both row and column different
+		} else {
+
+			// if starting piece is Knight, it can jump over pieces, return
+			// false
+			if (pieces[startLocation[0]][startLocation[1]] instanceof Knight) {
+				return false;
+			}
+
+			boolean goUp; // used to know if piece is moving up or down board
+
+			int largestrow = startLocation[0] > endLoc[0] ? startLocation[0]
+					: endLoc[0];
+
+			if (largestrow == startLocation[0]) {
+				goUp = true;
+			} else {
+				goUp = false;
+			}
+
+			int largestcolumn = startLocation[1] > endLoc[1] ? startLocation[1]
+					: endLoc[1];
+
+			boolean goLeft;
+
+			if (largestcolumn == startLocation[1]) {
+				goLeft = true;
+			} else {
+				goLeft = false;
+			}
+
+			// Check for diagonal pieces
+
+			if (goUp && goLeft) {
+
+				for (int i = startLocation[0] - 1; i > endLoc[0]; i--) {
+					for (int j = startLocation[1] - 1; j > endLoc[1]; i--, j--) {
+
+						if (i < 0 || j < 0) {
+							return false;
+						}
+
+						if (pieces[i][j] != null) {
+							return true;
+						}
+					}
+				}
+			} else if (goUp && !goLeft) {
+
+				for (int i = startLocation[0] - 1; i > endLoc[0]; i--) {
+					for (int j = startLocation[1] + 1; j < endLoc[1]; i--, j++) {
+
+						if (i < 0 || j < 0) {
+							return false;
+						}
+
+						if (pieces[i][j] != null) {
+							return true;
+						}
+					}
+				}
+			} else if (!goUp && goLeft) {
+
+				for (int i = startLocation[0] + 1; i < endLoc[0]; i++) {
+					for (int j = startLocation[1] - 1; j > endLoc[1]; i++, j--) {
+
+						if (i < 0 || j < 0) {
+							return false;
+						}
+
+						if (pieces[i][j] != null) {
+							return true;
+						}
+					}
+				}
+			} else {
+				for (int i = startLocation[0] + 1; i < endLoc[0]; i++) {
+					for (int j = startLocation[1] + 1; j < endLoc[1]; i++, j++) {
+
+						if (i < 0 || j < 0) {
+							return false;
+						}
+
+						if (pieces[i][j] != null) {
+							return true;
+						}
+					}
+				}
+			}
+
+		}
+		return false;
+	}
+
 }

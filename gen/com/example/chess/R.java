@@ -1693,7 +1693,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f09008a;
+        public static final int action_settings=0x7f09008c;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int aibutton=0x7f090045;
         public static final int always=0x7f090014;
@@ -1812,7 +1812,9 @@ containing a value of this type.
         public static final int split_action_bar=0x7f090004;
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000c;
+        public static final int text=0x7f09008a;
         public static final int title=0x7f090027;
+        public static final int toptext=0x7f09008b;
         public static final int undobutton=0x7f090044;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
@@ -1940,13 +1942,16 @@ containing a value of this type.
         public static final int aimove=0x7f0a0019;
         public static final int app_name=0x7f0a0010;
         public static final int back=0x7f0a0016;
+        public static final int bluesmove=0x7f0a001e;
         public static final int button=0x7f0a0013;
         public static final int draw=0x7f0a001b;
         public static final int hello_world=0x7f0a0011;
         public static final int homebutton=0x7f0a001a;
+        public static final int invalidmove=0x7f0a001f;
         public static final int play=0x7f0a0014;
         public static final int playback=0x7f0a0017;
         public static final int recgame=0x7f0a0015;
+        public static final int redsmove=0x7f0a001d;
         public static final int resign=0x7f0a001c;
         public static final int undobutton=0x7f0a0018;
     }

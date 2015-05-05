@@ -14,4 +14,9 @@
     <string name="homebutton">Home</string>
     <string name="draw">Draw</string>
     <string name="resign">Resign</string>
+    <string name="redsmove">Red\'s Move</string>
+    <string name="bluesmove">Blue\'s Move</string>
+    <string name="invalidmove">Invalid move</string>
+    
+    
 </resources>

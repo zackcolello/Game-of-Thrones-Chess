@@ -1,5 +1,7 @@
 package com.example.chess;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,12 +16,18 @@ public class MainActivity extends Activity {
 
 	private Button playbutton;
 	private Button recbutton;
-
+	public static ArrayList<Node> gamesList = new ArrayList<Node>(); 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		System.out.println("game list:");
+		for(Node n : gamesList){
+			System.out.println(n.gameName);
+		}
+		
 		this.playbutton = (Button) this.findViewById(R.id.playbutton);
 		this.playbutton.setOnClickListener(new OnClickListener() {
 			@Override

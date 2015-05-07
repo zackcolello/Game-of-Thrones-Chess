@@ -27,37 +27,31 @@
         android:layout_marginBottom="14dp"
         android:text="@string/playback" />
 
-    <TableLayout
-        android:layout_width="275dp"
-        android:layout_height="275dp"
-        
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="50dp" >
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="56dp"
+        android:orientation="vertical" >
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
+        <Spinner
+            android:id="@+id/sortSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:background="#E6E6E6"
+            />
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="270dp"
+            android:layout_height="180dp"
+            android:background ="#ADC2D6" 
+            android:choiceMode="singleChoice"
+			android:listSelector="#666666" >
 
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-    </TableLayout>
+        </ListView>
+    </LinearLayout>
 
 </RelativeLayout>

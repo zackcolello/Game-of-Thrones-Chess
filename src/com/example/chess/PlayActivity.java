@@ -49,6 +49,8 @@ public class PlayActivity extends Activity {
 	private static TextView text;
 	private static TextView toptext;
 
+	private static Pieces lastMovedPiece;
+	
 	private static int[] prevSelectedPiece = new int[2];
 	private static int[] selectedPiece = new int[2];
 	private static boolean pieceSelected = false;
@@ -136,7 +138,7 @@ public class PlayActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		moveList.clear();
-		
+		whosTurn = 'r';
 		setContentView(R.layout.playlayout);
 
 		// set last move to 0
@@ -375,7 +377,54 @@ public class PlayActivity extends Activity {
 
 								tie.setTitle("Game Over");
 								tie.setMessage("It's a draw!");
+								tie.setPositiveButton(
+										getResources().getString(R.string.savegame),
+										new DialogInterface.OnClickListener() {
+											public void onClick(DialogInterface dialog,
+													int which) {
 
+												// Second dialog box, enters name of game
+
+												final Dialog commentDialog = new Dialog(
+														PlayActivity.this);
+												commentDialog.setTitle("Save Game");
+												commentDialog.setContentView(R.layout.reply);
+												Button okBtn = (Button) commentDialog
+														.findViewById(R.id.ok);
+												okBtn.setOnClickListener(new View.OnClickListener() {
+
+													@Override
+													public void onClick(View v) {
+														
+														//Create new node for game
+														EditText et = (EditText) commentDialog.findViewById(R.id.body);
+														Node newt = new Node(et.getText().toString(), moveList);
+														MainActivity.gamesList.add(newt);
+														
+														startActivity(new Intent(
+																getApplicationContext(),
+																MainActivity.class));
+														commentDialog.dismiss();
+													}
+												});
+												Button cancelBtn = (Button) commentDialog
+														.findViewById(R.id.cancel);
+												cancelBtn
+														.setOnClickListener(new View.OnClickListener() {
+
+															@Override
+															public void onClick(View v) {
+
+																startActivity(new Intent(
+																		getApplicationContext(),
+																		MainActivity.class));
+																commentDialog.dismiss();
+															}
+														});
+												commentDialog.show();
+
+											}
+										});
 								tie.setNegativeButton(
 										getResources().getString(R.string.home),
 										new DialogInterface.OnClickListener() {
@@ -1766,13 +1815,39 @@ public class PlayActivity extends Activity {
 				// not valid move, could be valid capture by a pawn
 			} else {
 				// TODO: pawn check thing
+				if (pieces[endLoc[0]][endLoc[1]] == null) {
+					
+					if((whosTurn=='r')&&(pieces[prevSelectedPiece[0]][prevSelectedPiece[1]].getName().charAt(1)=='p')){
+						
+						if((pieces[endLoc[0] + 1][endLoc[1]] != null)
+								&& (pieces[endLoc[0] + 1][endLoc[1]] == lastMovedPiece)
+								&& (pieces[endLoc[0] + 1][endLoc[1]]
+										.getMoves() == 1)
+								&& (pieces[endLoc[0] + 1][endLoc[1]]
+										.getName().equals("bp"))){
+							//en Passat red
+						}
+						
+					}
+				}else if (pieces[endLoc[0]][endLoc[1]] == null) {
+					if((whosTurn=='b')&&(pieces[prevSelectedPiece[0]][prevSelectedPiece[1]].getName().charAt(1)=='p')){
+						if((pieces[endLoc[0] + 1][endLoc[1]] != null)
+								&& (pieces[endLoc[0] - 1][endLoc[1]] == lastMovedPiece)
+								&& (pieces[endLoc[0] - 1][endLoc[1]]
+										.getMoves() == 1)
+								&& (pieces[endLoc[0] - 1][endLoc[1]]
+										.getName().equals("rp"))){
+							//en Passat blue
+						}
+					}else{
 
 				// no piece there, nothing to capture
-				if (pieces[endLoc[0]][endLoc[1]] == null) {
+				
 					pieceSelected = false;
 					unselectAllPieces();
 					toptext.setText("Invalid Move");
 					return;
+					}
 				}
 
 				// Before checking if it can capture the piece, make sure it

@@ -23,4 +23,13 @@
     <string name="no">No</string>
     <string name="yesdraw">Draw</string>
     <string name="home">Home</string>
+    <string name="nextmove">Next Move</string>
+    
+    <!-- For Spinner -->
+    <string-array name = "sortBy">
+        <item >Sort by Date</item>
+        <item >Sort by Title</item>
+        
+    </string-array>
+    
 </resources>

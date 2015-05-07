@@ -1,21 +1,11 @@
 package com.example.chess;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import chessPieces.Bishop;
-import chessPieces.Chess;
 import chessPieces.King;
 import chessPieces.Knight;
 import chessPieces.Pawn;
@@ -49,8 +38,8 @@ public class PlayActivity extends Activity {
 	private static TextView text;
 	private static TextView toptext;
 
-	private static Pieces lastMovedPiece;
-	
+	private static Pieces lastMovedPiece = null;
+
 	private static int[] prevSelectedPiece = new int[2];
 	private static int[] selectedPiece = new int[2];
 	private static boolean pieceSelected = false;
@@ -136,7 +125,7 @@ public class PlayActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		moveList.clear();
 		whosTurn = 'r';
 		setContentView(R.layout.playlayout);
@@ -242,14 +231,16 @@ public class PlayActivity extends Activity {
 												continue;
 											}
 
+											lastMovedPiece = pieces[i][j];
 											// store last move
 											lastMove[0] = row;
 											lastMove[1] = col;
 											lastMove[2] = i;
 											lastMove[3] = j;
 
-											moveList.add("" + row + "" + col + ":" + i + "" + j);
-											
+											moveList.add("" + row + "" + col
+													+ ":" + i + "" + j);
+
 											// change turn
 											if (whosTurn == 'r') {
 												whosTurn = 'b';
@@ -293,14 +284,17 @@ public class PlayActivity extends Activity {
 												continue;
 											}
 
+											lastMovedPiece = pieces[i][j];
+
 											// store last move
 											lastMove[0] = row;
 											lastMove[1] = col;
 											lastMove[2] = i;
 											lastMove[3] = j;
 
-											moveList.add("" + row + "" + col + ":" + i + "" + j);
-											
+											moveList.add("" + row + "" + col
+													+ ":" + i + "" + j);
+
 											// change turn
 											if (whosTurn == 'r') {
 												whosTurn = 'b';
@@ -378,29 +372,40 @@ public class PlayActivity extends Activity {
 								tie.setTitle("Game Over");
 								tie.setMessage("It's a draw!");
 								tie.setPositiveButton(
-										getResources().getString(R.string.savegame),
+										getResources().getString(
+												R.string.savegame),
 										new DialogInterface.OnClickListener() {
-											public void onClick(DialogInterface dialog,
+											public void onClick(
+													DialogInterface dialog,
 													int which) {
 
-												// Second dialog box, enters name of game
+												// Second dialog box, enters
+												// name of game
 
 												final Dialog commentDialog = new Dialog(
 														PlayActivity.this);
-												commentDialog.setTitle("Save Game");
-												commentDialog.setContentView(R.layout.reply);
+												commentDialog
+														.setTitle("Save Game");
+												commentDialog
+														.setContentView(R.layout.reply);
 												Button okBtn = (Button) commentDialog
 														.findViewById(R.id.ok);
 												okBtn.setOnClickListener(new View.OnClickListener() {
 
 													@Override
 													public void onClick(View v) {
-														
-														//Create new node for game
-														EditText et = (EditText) commentDialog.findViewById(R.id.body);
-														Node newt = new Node(et.getText().toString(), moveList);
-														MainActivity.gamesList.add(newt);
-														
+
+														// Create new node for
+														// game
+														EditText et = (EditText) commentDialog
+																.findViewById(R.id.body);
+														Node newt = new Node(et
+																.getText()
+																.toString(),
+																moveList);
+														MainActivity.gamesList
+																.add(newt);
+
 														startActivity(new Intent(
 																getApplicationContext(),
 																MainActivity.class));
@@ -413,12 +418,14 @@ public class PlayActivity extends Activity {
 														.setOnClickListener(new View.OnClickListener() {
 
 															@Override
-															public void onClick(View v) {
+															public void onClick(
+																	View v) {
 
 																startActivity(new Intent(
 																		getApplicationContext(),
 																		MainActivity.class));
-																commentDialog.dismiss();
+																commentDialog
+																		.dismiss();
 															}
 														});
 												commentDialog.show();
@@ -451,7 +458,7 @@ public class PlayActivity extends Activity {
 		this.resignButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+
 				AlertDialog.Builder resignAlert = new AlertDialog.Builder(
 						PlayActivity.this);
 
@@ -494,12 +501,14 @@ public class PlayActivity extends Activity {
 
 									@Override
 									public void onClick(View v) {
-										
-										//Create new node for game
-										EditText et = (EditText) commentDialog.findViewById(R.id.body);
-										Node newt = new Node(et.getText().toString(), moveList);
+
+										// Create new node for game
+										EditText et = (EditText) commentDialog
+												.findViewById(R.id.body);
+										Node newt = new Node(et.getText()
+												.toString(), moveList);
 										MainActivity.gamesList.add(newt);
-										
+
 										startActivity(new Intent(
 												getApplicationContext(),
 												MainActivity.class));
@@ -546,17 +555,15 @@ public class PlayActivity extends Activity {
 
 			}
 		});
-		
+
 		createChessBoard();
 		updateBoard();
 		// printBoard();
-		
 
 	}
 
-	public static void writeFile(String data) throws Exception{
-		
-		
+	public static void writeFile(String data) throws Exception {
+
 	}
 
 	public void createChessBoard() {
@@ -1638,14 +1645,14 @@ public class PlayActivity extends Activity {
 
 	}
 
-	public static void assignPiece(Button b, int row, int col) {		
-		
+	public static void assignPiece(Button b, int row, int col) {
+
 		try {
 			writeFile("hello");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		if (pieces[row][col] != null) {
 			String name = pieces[row][col].getName();
 			switch (name) {
@@ -1732,10 +1739,12 @@ public class PlayActivity extends Activity {
 								return;
 							}
 
+							lastMovedPiece = pieces[endLoc[0]][endLoc[1]];
+
 							moveList.add(prevSelectedPiece[0] + ""
 									+ prevSelectedPiece[1] + ":" + endLoc[0]
 									+ "" + endLoc[1]);
-							
+
 							// store last move
 							lastMove[0] = prevSelectedPiece[0];
 							lastMove[1] = prevSelectedPiece[1];
@@ -1784,8 +1793,12 @@ public class PlayActivity extends Activity {
 							return;
 						}
 
-						moveList.add(prevSelectedPiece[0] + "" + prevSelectedPiece[1] + ":" + endLoc[0] + "" + endLoc[1]);
-						
+						lastMovedPiece = pieces[endLoc[0]][endLoc[1]];
+
+						moveList.add(prevSelectedPiece[0] + ""
+								+ prevSelectedPiece[1] + ":" + endLoc[0] + ""
+								+ endLoc[1]);
+
 						// store last move
 						lastMove[0] = prevSelectedPiece[0];
 						lastMove[1] = prevSelectedPiece[1];
@@ -1814,39 +1827,111 @@ public class PlayActivity extends Activity {
 
 				// not valid move, could be valid capture by a pawn
 			} else {
-				// TODO: pawn check thing
-				if (pieces[endLoc[0]][endLoc[1]] == null) {
-					
-					if((whosTurn=='r')&&(pieces[prevSelectedPiece[0]][prevSelectedPiece[1]].getName().charAt(1)=='p')){
-						
-						if((pieces[endLoc[0] + 1][endLoc[1]] != null)
-								&& (pieces[endLoc[0] + 1][endLoc[1]] == lastMovedPiece)
-								&& (pieces[endLoc[0] + 1][endLoc[1]]
-										.getMoves() == 1)
-								&& (pieces[endLoc[0] + 1][endLoc[1]]
-										.getName().equals("bp"))){
-							//en Passat red
-						}
-						
-					}
-				}else if (pieces[endLoc[0]][endLoc[1]] == null) {
-					if((whosTurn=='b')&&(pieces[prevSelectedPiece[0]][prevSelectedPiece[1]].getName().charAt(1)=='p')){
-						if((pieces[endLoc[0] + 1][endLoc[1]] != null)
-								&& (pieces[endLoc[0] - 1][endLoc[1]] == lastMovedPiece)
-								&& (pieces[endLoc[0] - 1][endLoc[1]]
-										.getMoves() == 1)
-								&& (pieces[endLoc[0] - 1][endLoc[1]]
-										.getName().equals("rp"))){
-							//en Passat blue
-						}
-					}else{
-
-				// no piece there, nothing to capture
+			
 				
-					pieceSelected = false;
-					unselectAllPieces();
-					toptext.setText("Invalid Move");
-					return;
+				
+				
+				//PAWN CHECK
+				if (pieces[endLoc[0]][endLoc[1]] == null) {
+
+					if ((whosTurn == 'r')
+							&& (pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+									.getName().charAt(1) == 'p')) {
+
+						if ((pieces[endLoc[0] + 1][endLoc[1]] != null)
+								&& (pieces[endLoc[0] + 1][endLoc[1]] == lastMovedPiece)
+								&& (pieces[endLoc[0] + 1][endLoc[1]].getMoves() == 1)
+								&& (pieces[endLoc[0] + 1][endLoc[1]].getName()
+										.equals("bp"))) {
+
+							// en Passat red
+							pieceTaken = pieces[endLoc[0] + 1][endLoc[1]];
+							// remove pieces pieces
+							pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
+							pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+							pieces[endLoc[0] + 1][endLoc[1]] = null;
+
+							if (isInCheck() && isInCheck == whosTurn) {
+								toptext.setText("Invalid Move");
+								pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = pieces[endLoc[0]][endLoc[1]];
+								pieces[endLoc[0] + 1][endLoc[1]] = pieceTaken;
+								return;
+							}
+
+							lastMovedPiece = pieces[endLoc[0]][endLoc[1]];
+
+							moveList.add(prevSelectedPiece[0] + ""
+									+ prevSelectedPiece[1] + ":" + endLoc[0]
+									+ "" + endLoc[1]);
+
+							// store last move
+							lastMove[0] = prevSelectedPiece[0];
+							lastMove[1] = prevSelectedPiece[1];
+							lastMove[2] = endLoc[0];
+							lastMove[3] = endLoc[1];
+
+							if (whosTurn == 'r') {
+								whosTurn = 'b';
+								text.setTextColor(Color.parseColor("#0066CC"));
+								text.setText("Blue's Move");
+							} else {
+								whosTurn = 'r';
+								text.setTextColor(Color.parseColor("#E80000"));
+								text.setText("Red's Move");
+							}
+						}
+					} else if ((whosTurn == 'b')
+							&& (pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
+									.getName().charAt(1) == 'p')) {
+						if ((pieces[endLoc[0] - 1][endLoc[1]] != null)
+								&& (pieces[endLoc[0] - 1][endLoc[1]] == lastMovedPiece)
+								&& (pieces[endLoc[0] - 1][endLoc[1]].getMoves() == 1)
+								&& (pieces[endLoc[0] - 1][endLoc[1]].getName()
+										.equals("rp"))) {
+							// en Passat blue
+							pieceTaken = pieces[endLoc[0] - 1][endLoc[1]];
+							// remove pieces pieces
+							pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
+							pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
+							pieces[endLoc[0] - 1][endLoc[1]] = null;
+
+							if (isInCheck() && isInCheck == whosTurn) {
+								toptext.setText("Invalid Move");
+								pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = pieces[endLoc[0]][endLoc[1]];
+								pieces[endLoc[0] - 1][endLoc[1]] = pieceTaken;
+								return;
+							}
+
+							lastMovedPiece = pieces[endLoc[0]][endLoc[1]];
+
+							moveList.add(prevSelectedPiece[0] + ""
+									+ prevSelectedPiece[1] + ":" + endLoc[0]
+									+ "" + endLoc[1]);
+
+							// store last move
+							lastMove[0] = prevSelectedPiece[0];
+							lastMove[1] = prevSelectedPiece[1];
+							lastMove[2] = endLoc[0];
+							lastMove[3] = endLoc[1];
+
+							if (whosTurn == 'r') {
+								whosTurn = 'b';
+								text.setTextColor(Color.parseColor("#0066CC"));
+								text.setText("Blue's Move");
+							} else {
+								whosTurn = 'r';
+								text.setTextColor(Color.parseColor("#E80000"));
+								text.setText("Red's Move");
+							}
+						}
+					} else {
+
+						// no piece there, nothing to capture
+
+						pieceSelected = false;
+						unselectAllPieces();
+						toptext.setText("Invalid Move");
+						return;
 					}
 				}
 
@@ -1868,17 +1953,17 @@ public class PlayActivity extends Activity {
 								.getName().charAt(0)) {
 					// Add captured piece to graveyard, move piece there
 
-					pieceTaken = pieces[endLoc[0]][endLoc[1]];
-
 					pieces[prevSelectedPiece[0]][prevSelectedPiece[1]]
 							.incrementMoves();
 					pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
 					pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
 
+					pieceTaken = pieces[endLoc[0]][endLoc[1]];
+
 					moveList.add(prevSelectedPiece[0] + ""
-							+ prevSelectedPiece[1] + ":" + endLoc[0]
-							+ "" + endLoc[1]);
-					
+							+ prevSelectedPiece[1] + ":" + endLoc[0] + ""
+							+ endLoc[1]);
+
 					if (isInCheck() && isInCheck == whosTurn) {
 						toptext.setText("Invalid Move");
 						pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = pieces[endLoc[0]][endLoc[1]];

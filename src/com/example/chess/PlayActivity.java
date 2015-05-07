@@ -1875,6 +1875,10 @@ public class PlayActivity extends Activity {
 					pieces[endLoc[0]][endLoc[1]] = pieces[prevSelectedPiece[0]][prevSelectedPiece[1]];
 					pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = null;
 
+					moveList.add(prevSelectedPiece[0] + ""
+							+ prevSelectedPiece[1] + ":" + endLoc[0]
+							+ "" + endLoc[1]);
+					
 					if (isInCheck() && isInCheck == whosTurn) {
 						toptext.setText("Invalid Move");
 						pieces[prevSelectedPiece[0]][prevSelectedPiece[1]] = pieces[endLoc[0]][endLoc[1]];

@@ -25,7 +25,7 @@ public class Node implements Comparable<Node> {
 		this.moves = moveList;
 	}
 	public String toString(){
-		return this.gameName;
+		return this.gameName + " - " + this.cal.getTime();
 	}
 
 	@Override
